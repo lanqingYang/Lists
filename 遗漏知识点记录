@@ -1,0 +1,39 @@
+1.    .find()
+
+find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。
+
+find() 方法为数组中的每个元素都调用一次函数执行：
+
+当数组中的元素在测试条件时返回 true 时, find() 返回符合条件的元素，之后的值不会再调用执行函数。
+如果没有符合条件的元素返回 undefined
+注意: find() 对于空数组，函数是不会执行的。
+
+注意: find() 并没有改变数组的原始值。
+
+举例子：
+var ages = [3, 10, 18, 20];
+ 
+function checkAdult(age) {
+    return age >= 18;
+}
+ 
+ages.find(checkAdult);
+返回18
+
+2.   .some（） 
+与.find()基本同理，但是返回的是true和false，如果如果有一个元素满足条件，则表达式返回true , 剩余的元素不会再执行检测。
+如果都不满足就返回false
+
+上面的例子： 
+ages.some((ages)=>{
+ return ages>18
+ //返回true ，>20返回false
+})
+
+3.要去补充的知识点：可枚举属性！
+
+4.$router与$route
+
+5.什么是vuex?
+
+
