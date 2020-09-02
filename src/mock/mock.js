@@ -59,22 +59,27 @@ export default {
         }, 200);
       });
     });
+
+    //第二部分，新增todo单个列表
     // 获取todo单个列表
     mock.onGet("/todo/listId").reply(config => {
       let { id } = config.params;
       // id 是传进来的值
       // todo 是根据id和现有的Todos数据匹配，找出id相等的数据，在进行返回
+      //关于find()方法 见 《《遗漏知识点记录》》第1点
       let todo = Todos.find(todo => {
         return id && todo.id === id;
       });
       // todo.count (等待完成数目)等于 todo.record（代办事项列表下面未被选择的数据
-      todo
-        ? (todo.count = todo
-            ? todo.record.filter(data => {
-                return data.checked === false;
-              }).length
-            : null)
-        : false;
+      // todo ? (todo.count = todo
+      //       ? todo.record.filter(data => {
+      //           return data.checked === false;
+      //         }).length
+      //       : null)
+      //   : false;
+      todo.count = todo.record.filter(data => {
+                   return data.checked === false;
+                }).length;
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve([
@@ -88,9 +93,11 @@ export default {
     });
     // 新增一条代办事项
     mock.onPost("/todo/addRecord").reply(config => {
+      // JSON.parse方法，parse用于从一个字符串中解析出json对象
       let { id, text } = JSON.parse(config.data);
       // id 是传进来的值唯一待办项的id
       // text 用户新增输入的数据
+      //.some()方法，见《遗漏知识点记录》第2条哦
       Todos.some((t, index) => {
         if (t.id === id) {
           t.record.push({

@@ -14,12 +14,15 @@ export const getTodoList = params => {
   });
 };
 
+//新增一个请求查看代办单项列表的数据接口
 export const getTodo = params => {
   return axios.get(`/todo/listId`, {
     params: params
   });
 };
 
+
+//新增一个请求新增代办单的接口函数
 export const addRecord = params => {
   return axios.post(`/todo/addRecord`, params).then(res => res.data);
 };

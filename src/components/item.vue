@@ -18,9 +18,23 @@
 
 <script>
 export default {
-  props: ["item"],
+  // 版本1
+  // props: ["item"],
   //   子组件显式的用props选项声明它期待获取的数据
   //这里声明了 它想要‘item’的数据
+
+  //版本2
+  props: {
+    item: {
+      type: Object,
+      default: () => {
+        return {
+          checked: true,
+          text: "你好，世界",
+        };
+      },
+    },
+  },
 };
 </script>
 

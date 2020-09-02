@@ -8,7 +8,8 @@
       @click="goList(item.id)"
       :class="{ active: item.id === todoId }"
       v-for="item in items"
-      ><!-- 单个菜单容器 -->
+    >
+      <!-- 单个菜单容器 -->
       <span class="icon-lock" v-if="item.locked"></span>
       <!-- 锁图标 -->
       <span class="count-list" v-if="item.count">{{ item.count }}</span>
@@ -58,15 +59,15 @@ export default {
   data() {
     return {
       items: [], //菜单数据
-      todoId: "" //默认选中id
+      todoId: "", //默认选中id
     };
   },
   created() {
     //在dom还没有开始渲染的时候执行，调用请求菜单列表数据的接口
-    getTodoList({}).then(res => {
+    getTodoList({}).then((res) => {
       const TODOS = res.data.todos; //数据都会返回在res.data中
       this.items = TODOS; //把菜单数据赋值给定义的this.items
-      this.todoId = TODOS[0].id; //把菜单数据䣌默认的第一个对象id赋值给选中id
+      this.todoId = TODOS[0].id; //把菜单数据默认的第一个对象id赋值给选中id
     });
   },
   methods: {
@@ -77,15 +78,22 @@ export default {
     addTodoList() {
       //点击新增按钮的时候
       //调用新增菜单的接口，在接口调用成功再请求数据
-      addTodo({}).then(data => {
-        getTodoList({}).then(res => {
+      addTodo({}).then((data) => {
+        getTodoList({}).then((res) => {
           const TODOS = res.data.todos;
           this.todoId = TODOS[TODOS.length - 1].id;
           this.items = TODOS;
         });
       });
-    }
-  }
+    },
+  },
+
+  watch: {
+    todoId(id) {
+      this.$router.push({ name: "todo", params: { id: id } });
+      // 监听到用户的点击todoId的变化再跳转路由
+    },
+  },
 };
 </script>
 
