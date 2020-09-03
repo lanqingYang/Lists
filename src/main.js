@@ -4,6 +4,7 @@ import Vue from "vue";
 import App from "./App";
 import router from "./router";
 import Mock from "./mock"; //引入mock模块
+import store from "./vuex/store";
 
 Mock.start();
 
@@ -14,6 +15,7 @@ Vue.config.productionTip = false;
 new Vue({
   el: "#app",
   router, //注入路由配置
-  components: { App }, //注入组件
-  template: "<App/>" //配置根模板，即打开页面显示那个组件
+  template: "<App/>", //配置根模板，即打开页面显示那个组件
+  store, //注入实例
+  components: { App } //注入组件
 });

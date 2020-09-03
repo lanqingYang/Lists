@@ -30,6 +30,9 @@
         </div>
       </div>
 
+      <div class="nav-group" @click="$store.dispatch('updateMenu')" v-show="!isUpdate"></div>
+      <!-- 在彩带你的图标下面添加updateMenu，他可以直接调用vuex actions.js里面的updateMenu方法 -->
+
       <div class="form todo-new input-symbol">
         <!-- 新增单个代办单项输入框,监听了回车事件，双向绑定text值,监听了disabled属性，在todo.locked为true的情况下无法编辑-->
         <input
@@ -74,6 +77,7 @@ export default {
         { checked: false, text: "新的一天", isDelete: false },
       ],
       text: "", //新增代办单项绑定的值
+      isUpdate: false,
     };
   },
   methods: {
