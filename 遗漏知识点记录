@@ -1,4 +1,4 @@
-1.    .find()
+1.    数组 .find()方法
 
 find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。
 
@@ -35,5 +35,19 @@ ages.some((ages)=>{
 4.$router与$route
 
 5.什么是vuex?
+
+6.数组 .map（）方法
+
+var numbers = [4, 9, 16, 25];
+
+function myFunction() {
+    x = document.getElementById("demo")
+    x.innerHTML = numbers.map(Math.sqrt);
+}
+输出结果为:
+
+2,3,4,5
+map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
+map() 方法按照原始数组元素顺序依次处理元素。
 
 

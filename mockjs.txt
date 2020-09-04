@@ -1,0 +1,4 @@
+mockjs
+https://www.jianshu.com/p/d812ce349265 详情查看
+mock模拟后端接口，可随机生成所需数据，可模拟对数据的增删改查
+

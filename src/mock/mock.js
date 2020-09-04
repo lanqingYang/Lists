@@ -6,6 +6,7 @@ import { Todos } from "./data/todoList"; // 导入Todos数据
 export default {
   /**
    * mock start
+   *  index.js-通过axios-mock-adapter生成代理api地址
    */
   start() {
     // 初始化函数
@@ -71,15 +72,16 @@ export default {
         return id && todo.id === id;
       });
       // todo.count (等待完成数目)等于 todo.record（代办事项列表下面未被选择的数据
-      // todo ? (todo.count = todo
-      //       ? todo.record.filter(data => {
-      //           return data.checked === false;
-      //         }).length
-      //       : null)
-      //   : false;
-      todo.count = todo.record.filter(data => {
-                   return data.checked === false;
-                }).length;
+      todo
+        ? (todo.count = todo
+            ? todo.record.filter(data => {
+                return data.checked === false;
+              }).length
+            : null)
+        : false;
+      // todo.count = todo.record.filter(data => {
+      //              return data.checked === false;
+      //           }).length;
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve([
