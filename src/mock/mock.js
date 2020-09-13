@@ -31,7 +31,9 @@ export default {
         return true;
       });
       return new Promise((resolve, reject) => {
+        //200ms后执行函数
         setTimeout(() => {
+          //resolve中只有一个参数value 多个参数可用数组包裹
           resolve([
             200,
             {

@@ -6,6 +6,7 @@ import router from "./router";
 import Mock from "./mock"; //引入mock模块
 import store from "./vuex/store";
 
+//执行初始化函数，可全局调用
 Mock.start();
 
 //关闭生产模式下给出的提示
